@@ -12,13 +12,13 @@ namespace MasterLoggerMonitor
     class LogFileHandler
     {
         public string location { get; set; }
-        public string format { get; set; }
+        public string[] format { get; set; }
         public string masterLog { get; set; }
 
         public LogFileHandler(string fileLocation, string fileFormat, string masterLogFile)
         {
             location = fileLocation;
-            format = fileFormat;
+            format = fileFormat.Split(',');
             masterLog = masterLogFile;
 
             spawnWatcher();
@@ -56,9 +56,34 @@ namespace MasterLoggerMonitor
                             while ((line = sr.ReadLine()) != null)
                             {
                                 Console.Out.WriteLine(line);
-                                StreamWriter fsWriter = new StreamWriter(masterLog, true);
-                                fsWriter.WriteLine(line);
-                                fsWriter.Close();
+
+                                // Process line in log file
+                                string[] cols = line.Split(',');
+
+                                string Timestamp="";
+                                string Level="";
+                                string Output="";
+
+                                // Loop through format array and find where the columns sit so we know what to map to what
+                                for(int i=0; i <= format.GetUpperBound(0); i++)
+                                {
+                                    if (format[i] == "Time")
+                                        Timestamp = cols[i];
+                                }
+
+                                for (int i = 0; i <= format.GetUpperBound(0); i++)
+                                {
+                                    if (format[i] == "Level")
+                                        Level = cols[i];
+                                }
+
+                                for (int i = 0; i <= format.GetUpperBound(0); i++)
+                                {
+                                    if (format[i] == "Output")
+                                        Output = cols[i];
+                                }
+
+                                MasterLogWriter.WriteEntry(Timestamp, location, Level.Trim(), Output.Trim());
                             }
                             latch.Set();
                         }

@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dataGateway.cs" />
+    <Compile Include="dbTableHandler.cs" />
     <Compile Include="LogFileHandler.cs" />
+    <Compile Include="MasterLogWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

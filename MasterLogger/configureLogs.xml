@@ -3,12 +3,19 @@
   <masterLog>c:\Temp\MasterLog\MasterLog.log</masterLog>
   <logSource>
     <type>txt</type>
-    <location>C:Temp\logs\app.log</location>
-    <format>Time,SourceID,Level,Output</format>
+    <location>C:\Temp\logs\app.log</location>
+    <format>Time,Level,Output</format>
+  </logSource>
+  <logSource>
+    <type>dbTable</type>
+    <connStr>server=localhost\SQLExpress;database=Portal;integrated security=true</connStr>
+    <query>SELECT * FROM Documents WHERE DocumentID > {0} ORDER BY DateModified</query>
+    <IDField>DocumentID</IDField>
+    <mapping time="DateModified" output="'{1}' changed by user '{8}'" error="Error"></mapping>
   </logSource>
   <logSource>
     <type>xml</type>
-    <location>C:Temp\xml\log.xml</location>
+    <location>C:\Temp\xml\log.xml</location>
     <format>Time,SourceID,Level,Output</format>
   </logSource>
 </sources>
