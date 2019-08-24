@@ -43,7 +43,8 @@ namespace MasterLoggerMonitor
                                                                     logSource.Element("query").Value,
                                                                     logSource.Element("mapping").Attribute("time").Value,
                                                                     logSource.Element("mapping").Attribute("output").Value,
-                                                                    logSource.Element("mapping").Attribute("error").Value);
+                                                                    logSource.Element("mapping").Attribute("error").Value,
+                                                                    logSource.Element("pollingInterval").Value);
                         break;
                     case "xml":
                         Console.WriteLine("xml file");

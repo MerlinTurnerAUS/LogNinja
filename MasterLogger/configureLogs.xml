@@ -9,9 +9,10 @@
   <logSource>
     <type>dbTable</type>
     <connStr>server=localhost\SQLExpress;database=Portal;integrated security=true</connStr>
-    <query>SELECT * FROM Documents WHERE DocumentID > {0} ORDER BY DateModified</query>
+    <query>SELECT * FROM Documents WHERE DateModified > @DateModified ORDER BY DateModified</query>
     <IDField>DocumentID</IDField>
-    <mapping time="DateModified" output="'{1}' changed by user '{8}'" error="Error"></mapping>
+    <mapping time="DateModified" output="'{1}' last changed by user '{8}'" error="Error"></mapping>
+    <pollingInterval>5000</pollingInterval>
   </logSource>
   <logSource>
     <type>xml</type>

@@ -15,29 +15,29 @@ namespace MasterLoggerMonitor
         public string timeColumn { get; set; }
         public string outputString { get; set; }
         public string errorColumn { get; set; }
-        public int LastProcessedID { get; set; }
+        public DateTime lastTimeProcessed { get; set; }
 
-        public dbTableHandler(string connectionString, string query,string time, string outString, string errColumn)
+        public dbTableHandler(string connectionString, string query,string time, string outString, string errColumn, string pollTime)
         {
             connStr = connectionString;
             selectQuery = query;
             timeColumn = time;
             outputString = outString;
             errorColumn = errColumn;
-            LastProcessedID = 0;
+            lastTimeProcessed = DateTime.MinValue;
 
             // Get all rows currently in table
             InterogateTable();
 
             // Set up timer to check table every interval
-            Timer timer = new Timer(5000);
+            Timer timer = new Timer(Convert.ToInt32(pollTime));
             timer.Elapsed += OnTimerTick;
             timer.Enabled = true;
         }
 
         private void InterogateTable()
         {
-            DataTable dt = DataGateway.GetTable(connStr, string.Format(selectQuery,LastProcessedID));
+            DataTable dt = DataGateway.GetRecordsSinceLastPoll(connStr, selectQuery, timeColumn, lastTimeProcessed);
             foreach (DataRow row in dt.Rows)
             {
                 string timeString;
@@ -65,9 +65,8 @@ namespace MasterLoggerMonitor
                 }
                 MasterLogWriter.WriteEntry(timeString, connStr, ErrString, Output);
 
-                // Get last ID
-                LastProcessedID = Convert.ToInt32(row[0]);
-
+                // Get last Date Modified
+                lastTimeProcessed = dtLastModified;
             }
         }
 
