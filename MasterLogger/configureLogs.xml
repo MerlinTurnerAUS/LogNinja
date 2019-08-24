@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sources>
+  <masterLog>c:\Temp\MasterLog\MasterLog.log</masterLog>
+  <logSource>
+    <type>txt</type>
+    <location>C:Temp\logs\app.log</location>
+    <format>Time,SourceID,Level,Output</format>
+  </logSource>
+  <logSource>
+    <type>xml</type>
+    <location>C:Temp\xml\log.xml</location>
+    <format>Time,SourceID,Level,Output</format>
+  </logSource>
+</sources>
