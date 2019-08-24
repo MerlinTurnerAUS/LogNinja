@@ -55,8 +55,6 @@ namespace MasterLoggerMonitor
                             String line;
                             while ((line = sr.ReadLine()) != null)
                             {
-                                Console.Out.WriteLine(line);
-
                                 // Process line in log file
                                 string[] cols = line.Split(',');
 

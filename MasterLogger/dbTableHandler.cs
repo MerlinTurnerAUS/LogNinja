@@ -65,8 +65,6 @@ namespace MasterLoggerMonitor
                 }
                 MasterLogWriter.WriteEntry(timeString, connStr, ErrString, Output);
 
-                Console.WriteLine(row.ToString());
-
                 // Get last ID
                 LastProcessedID = Convert.ToInt32(row[0]);
 

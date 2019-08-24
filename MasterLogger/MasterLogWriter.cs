@@ -14,6 +14,7 @@ namespace MasterLoggerMonitor
         {
             StreamWriter fsWriter = new StreamWriter(masterLogLocation, true);
             fsWriter.WriteLine("{0}, {1}, {2}, {3}",Timestamp,source,Level,Output);
+            Console.WriteLine("{0}, {1}, {2}, {3}", Timestamp, source, Level, Output);
             fsWriter.Close();
         }
     }
