@@ -17,6 +17,8 @@
   <logSource>
     <type>xml</type>
     <location>C:\Temp\xml\log.xml</location>
-    <format>Time,SourceID,Level,Output</format>
+    <formatString>{4:yyyy-MM-dd HH:mm:ss.fff}, C:\Temp\xml\log.xml, {3}, {1} | {2}</formatString>
+    <groupTag>action</groupTag>
+    <pollingInterval>5000</pollingInterval>
   </logSource>
 </sources>

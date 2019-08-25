@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.IO.Abstractions;
-using System.IO.Abstractions.TestingHelpers;
 
 namespace MasterLoggerMonitor
 {
@@ -30,6 +29,14 @@ namespace MasterLoggerMonitor
             StreamWriter fsWriter = fileSystem.File.AppendText(masterLogLocation);
             fsWriter.WriteLine("{0}, {1}, {2}, {3}",Timestamp,source,Level,Output);
             Console.WriteLine("{0}, {1}, {2}, {3}", Timestamp, source, Level, Output);
+            fsWriter.Close();
+        }
+
+        public void WriteEntry(string entryLine)
+        {
+            StreamWriter fsWriter = fileSystem.File.AppendText(masterLogLocation);
+            fsWriter.WriteLine(entryLine);
+            Console.WriteLine(entryLine);
             fsWriter.Close();
         }
     }

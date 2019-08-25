@@ -17,8 +17,8 @@ namespace MasterLoggerMonitor
         private static void SetupWatchers()
         {
             // Read config file
-            var doc = XDocument.Load("configureLogs.xml");
-            string MasterLogLocation = doc.Element("sources").Element("masterLog").Value;
+            var configFile = XDocument.Load("configureLogs.xml");
+            string MasterLogLocation = configFile.Element("sources").Element("masterLog").Value;
 
             // Set up MasterLogFile
             MasterLogWriter masterLogger = new MasterLogWriter();
@@ -26,7 +26,7 @@ namespace MasterLoggerMonitor
 
             Console.WriteLine("MasterLog location: {0}", MasterLogLocation);
 
-            var sources = doc.Descendants("logSource");
+            var sources = configFile.Descendants("logSource");
 
             foreach (XElement logSource in sources)
             {
@@ -50,7 +50,12 @@ namespace MasterLoggerMonitor
                                                                     logSource.Element("pollingInterval").Value);
                         break;
                     case "xml":
-                        Console.WriteLine("xml file");
+                        Console.WriteLine("Settin up xml file logger");
+                        XMLHandler xmlH=new XMLHandler(masterLogger,
+                                                                    logSource.Element("location").Value,
+                                                                    logSource.Element("formatString").Value,
+                                                                    logSource.Element("groupTag").Value,
+                                                                    logSource.Element("pollingInterval").Value);
                         break;
                 }
             }
