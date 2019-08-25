@@ -13,13 +13,14 @@ namespace MasterLoggerMonitor
     {
         public string location { get; set; }
         public string[] format { get; set; }
-        public string masterLog { get; set; }
+        private MasterLogWriter masterLogger;
 
-        public LogFileHandler(string fileLocation, string fileFormat, string masterLogFile)
+        
+        public LogFileHandler(MasterLogWriter mlw, string fileLocation, string fileFormat, string masterLogFile)
         {
             location = fileLocation;
             format = fileFormat.Split(',');
-            masterLog = masterLogFile;
+            masterLogger = mlw;
 
             spawnWatcher();
         }
@@ -81,7 +82,7 @@ namespace MasterLoggerMonitor
                                         Output = cols[i];
                                 }
 
-                                MasterLogWriter.WriteEntry(Timestamp, location, Level.Trim(), Output.Trim());
+                                masterLogger.WriteEntry(Timestamp, location, Level.Trim(), Output.Trim());
                             }
                             latch.Set();
                         }

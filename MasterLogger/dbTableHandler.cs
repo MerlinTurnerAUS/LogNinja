@@ -16,9 +16,11 @@ namespace MasterLoggerMonitor
         public string outputString { get; set; }
         public string errorColumn { get; set; }
         public DateTime lastTimeProcessed { get; set; }
+        private MasterLogWriter masterLogger;
 
-        public dbTableHandler(string connectionString, string query,string time, string outString, string errColumn, string pollTime)
+        public dbTableHandler(MasterLogWriter mlw, string connectionString, string query,string time, string outString, string errColumn, string pollTime)
         {
+            masterLogger = mlw;
             connStr = connectionString;
             selectQuery = query;
             timeColumn = time;
@@ -63,7 +65,7 @@ namespace MasterLoggerMonitor
                     Output = string.Format("{0} in {1}", row[errorColumn], outputString);
                     Output = string.Format(Output, arguments);
                 }
-                MasterLogWriter.WriteEntry(timeString, connStr, ErrString, Output);
+                masterLogger.WriteEntry(timeString, connStr, ErrString, Output);
 
                 // Get last Date Modified
                 lastTimeProcessed = dtLastModified;
