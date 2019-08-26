@@ -34,15 +34,24 @@
             this.chkLogError = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtDBName = new System.Windows.Forms.TextBox();
-            this.txtDBError = new System.Windows.Forms.TextBox();
-            this.txtUser = new System.Windows.Forms.TextBox();
             this.btnDB = new System.Windows.Forms.Button();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.txtDBError = new System.Windows.Forms.TextBox();
+            this.txtDBName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnXML = new System.Windows.Forms.Button();
+            this.txtErrorLevelXML = new System.Windows.Forms.TextBox();
+            this.txtXMLDesk = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -116,58 +125,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DB Table";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Document:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Error text:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 74);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "User:";
-            // 
-            // txtDBName
-            // 
-            this.txtDBName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDBName.Location = new System.Drawing.Point(70, 20);
-            this.txtDBName.Name = "txtDBName";
-            this.txtDBName.Size = new System.Drawing.Size(665, 20);
-            this.txtDBName.TabIndex = 3;
-            // 
-            // txtDBError
-            // 
-            this.txtDBError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDBError.Location = new System.Drawing.Point(70, 46);
-            this.txtDBError.Name = "txtDBError";
-            this.txtDBError.Size = new System.Drawing.Size(665, 20);
-            this.txtDBError.TabIndex = 4;
-            // 
-            // txtUser
-            // 
-            this.txtUser.Location = new System.Drawing.Point(70, 74);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(197, 20);
-            this.txtUser.TabIndex = 5;
-            // 
             // btnDB
             // 
             this.btnDB.Location = new System.Drawing.Point(7, 110);
@@ -178,11 +135,144 @@
             this.btnDB.UseVisualStyleBackColor = true;
             this.btnDB.Click += new System.EventHandler(this.BtnDB_Click);
             // 
+            // txtUser
+            // 
+            this.txtUser.Location = new System.Drawing.Point(70, 74);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(197, 20);
+            this.txtUser.TabIndex = 5;
+            // 
+            // txtDBError
+            // 
+            this.txtDBError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDBError.Location = new System.Drawing.Point(70, 46);
+            this.txtDBError.Name = "txtDBError";
+            this.txtDBError.Size = new System.Drawing.Size(665, 20);
+            this.txtDBError.TabIndex = 4;
+            // 
+            // txtDBName
+            // 
+            this.txtDBName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDBName.Location = new System.Drawing.Point(70, 20);
+            this.txtDBName.Name = "txtDBName";
+            this.txtDBName.Size = new System.Drawing.Size(665, 20);
+            this.txtDBName.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 74);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "User:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Error text:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Document:";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnXML);
+            this.groupBox3.Controls.Add(this.txtErrorLevelXML);
+            this.groupBox3.Controls.Add(this.txtXMLDesk);
+            this.groupBox3.Controls.Add(this.txtName);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Location = new System.Drawing.Point(19, 284);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(758, 147);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "XML";
+            // 
+            // btnXML
+            // 
+            this.btnXML.Location = new System.Drawing.Point(7, 110);
+            this.btnXML.Name = "btnXML";
+            this.btnXML.Size = new System.Drawing.Size(94, 23);
+            this.btnXML.TabIndex = 6;
+            this.btnXML.Text = "Write to XML";
+            this.btnXML.UseVisualStyleBackColor = true;
+            this.btnXML.Click += new System.EventHandler(this.BtnXML_Click);
+            // 
+            // txtErrorLevelXML
+            // 
+            this.txtErrorLevelXML.Location = new System.Drawing.Point(70, 74);
+            this.txtErrorLevelXML.Name = "txtErrorLevelXML";
+            this.txtErrorLevelXML.Size = new System.Drawing.Size(197, 20);
+            this.txtErrorLevelXML.TabIndex = 5;
+            // 
+            // txtXMLDesk
+            // 
+            this.txtXMLDesk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtXMLDesk.Location = new System.Drawing.Point(70, 46);
+            this.txtXMLDesk.Name = "txtXMLDesk";
+            this.txtXMLDesk.Size = new System.Drawing.Size(665, 20);
+            this.txtXMLDesk.TabIndex = 4;
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtName.Location = new System.Drawing.Point(70, 20);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(665, 20);
+            this.txtName.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 74);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Level:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 46);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Description:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Name:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 342);
+            this.ClientSize = new System.Drawing.Size(800, 531);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -191,6 +281,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -210,6 +302,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnXML;
+        private System.Windows.Forms.TextBox txtErrorLevelXML;
+        private System.Windows.Forms.TextBox txtXMLDesk;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

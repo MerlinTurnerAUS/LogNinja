@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Linq;
-using System.IO.Abstractions.TestingHelpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MasterLoggerMonitor;
-using System.Xml.Linq;
-using System.Xml;
+using System.IO.Abstractions.TestingHelpers;
 
 namespace MonitorTests
 {
     [TestClass]
-    public class XMLHandlerTests
+    public class DBHandlerTests
     {
         [TestMethod]
-        public void XMLHandlerInitialiseTest()
+        public void DBHandlerInitialTest()
         {
             // Prepare mock file system for test
             string mockFileName = @"C:\Temp\Test.txt";
@@ -25,15 +22,18 @@ namespace MonitorTests
             MasterLogWriter mlw = new MasterLogWriter(mockFileSystem);
             mlw.masterLogLocation = mockFileName;
 
-            XMLHandler xmlH = new XMLHandler(mlw, @"C:\Temp\xml\log.xml", @"{4:yyyy-MM-dd HH:mm:ss.fff}, C:\Temp\xml\log.xml, {3}, {1} | {2}", "action", "timestamp", "5000");
+            dbTableHandler dbTH = new dbTableHandler(mlw, @"server=localhost\SQLExpress;database=Portal;integrated security=true",
+                "SELECT * FROM Documents WHERE DateModified > @DateModified ORDER BY DateModified", "DateModified", "'{1}' last changed by user '{8}'",
+                "Error", "5000");
             MockFileData mockOutputFile = mockFileSystem.GetFile(mockFileName);
             string[] outputLines = mockOutputFile.TextContents.SplitLines();
             Console.WriteLine("Number of lines in mock file: {0}", outputLines.Length);
             Assert.IsTrue(outputLines.Length > 0);
+            Assert.AreEqual(@"2019-07-10 09:11:38,000, server=localhost\SQLExpress;database=Portal;integrated security=true, INFO, 'Coded special document' last changed by user 'jenny'", outputLines[0]);
         }
 
         [TestMethod]
-        public void XMLHandlerUpdatedTest()
+        public void DBHandlerUpdateTest()
         {
             // Prepare mock file system for test
             string mockFileName = @"C:\Temp\Test.txt";
@@ -46,23 +46,20 @@ namespace MonitorTests
             MasterLogWriter mlw = new MasterLogWriter(mockFileSystem);
             mlw.masterLogLocation = mockFileName;
 
-            XMLHandler xmlH = new XMLHandler(mlw, @"C:\Temp\xml\log.xml", @"{4:yyyy-MM-dd HH:mm:ss.fff}, C:\Temp\xml\log.xml, {3}, {1} | {2}", "action", "timestamp", "5000");
+            dbTableHandler dbTH = new dbTableHandler(mlw, @"server=localhost\SQLExpress;database=Portal;integrated security=true",
+                "SELECT * FROM Documents WHERE DateModified > @DateModified ORDER BY DateModified", "DateModified", "'{1}' last changed by user '{8}'",
+                "Error", "5000");
+
+
             MockFileData mockOutputFile = mockFileSystem.GetFile(mockFileName);
             string[] outputLines = mockOutputFile.TextContents.SplitLines();
             Console.WriteLine("Number of lines in mock file: {0}", outputLines.Length);
-
             Assert.IsTrue(outputLines.Length > 0);
-            //string xmlFile = @"C:\Temp\xml\log.xml";
+            Assert.AreEqual(@"2019-07-10 09:11:38,000, server=localhost\SQLExpress;database=Portal;integrated security=true, INFO, 'Coded special document' last changed by user 'jenny'", outputLines[0]);
 
-            //XDocument document = XDocument.Load(xmlFile);
-            //document.Element("actions").Add(new XElement("action",
-            //                                    new XElement("ID", 10),
-            //                                    new XElement("name", txtName.Text),
-            //                                    new XElement("description", txtXMLDesk.Text),
-            //                                    new XElement("level", txtErrorLevelXML.Text),
-            //                                    new XElement("timestamp", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"))));
-            //document.Save(xmlFile);
 
         }
+
+
     }
 }

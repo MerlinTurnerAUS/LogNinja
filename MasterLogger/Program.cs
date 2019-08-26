@@ -55,6 +55,7 @@ namespace MasterLoggerMonitor
                                                                     logSource.Element("location").Value,
                                                                     logSource.Element("formatString").Value,
                                                                     logSource.Element("groupTag").Value,
+                                                                    logSource.Element("timeStampTag").Value,
                                                                     logSource.Element("pollingInterval").Value);
                         break;
                 }

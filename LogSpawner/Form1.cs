@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace LogSpawner
 {
@@ -42,6 +43,21 @@ namespace LogSpawner
             cmd.ExecuteNonQuery();
             
             conn.Close();
+        }
+
+        private void BtnXML_Click(object sender, EventArgs e)
+        {
+            string xmlFile = @"C:\Temp\xml\log.xml";
+
+            XDocument document = XDocument.Load(xmlFile);
+            document.Element("actions").Add(new XElement("action", 
+                                                new XElement("ID", 10), 
+                                                new XElement("name", txtName.Text), 
+                                                new XElement("description", txtXMLDesk.Text), 
+                                                new XElement("level", txtErrorLevelXML.Text),
+                                                new XElement("timestamp", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"))));
+            document.Save(xmlFile);
+
         }
     }
 }

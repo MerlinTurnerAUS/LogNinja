@@ -8,7 +8,7 @@ using System.Timers;
 
 namespace MasterLoggerMonitor
 {
-    class dbTableHandler
+    public class dbTableHandler
     {
         public string connStr { get; set; }
         public string selectQuery { get; set; }

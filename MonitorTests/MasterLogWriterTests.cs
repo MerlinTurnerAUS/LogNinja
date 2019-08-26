@@ -11,7 +11,7 @@ namespace MonitorTests
     public class MasterLogWriterTests
     {
         [TestMethod]
-        public void MasterLogWriter_WriteToEmptyLogTest()
+        public void MasterLogWriter_WriteCustomLogToEmptyLogTest()
         {
             // Prepare mock file system for test
             string mockFileName = @"C:\Temp\Test.txt";
@@ -39,7 +39,7 @@ namespace MonitorTests
         }
 
         [TestMethod]
-        public void MasterLogWriter_WriteLogTest()
+        public void MasterLogWriter_WriteCustomLogTest()
         {
             // Prepare mock file system for test
             string mockFileName = @"C:\temp\in.txt";
@@ -67,6 +67,65 @@ namespace MonitorTests
             Assert.AreEqual(outputLines[2], "line3");
             Assert.IsTrue(outputLines.Length == 4);
             Assert.AreEqual(outputLines[3], string.Format("{0:yyyy-MM-dd HH:mm:ss.fff}, UnitTest, Test, Test output", nowStamp));
+        }
+
+        [TestMethod]
+        public void MasterLogWriter_WriteFreeTextToEmptyLogTest()
+        {
+            // Prepare mock file system for test
+            string mockFileName = @"C:\Temp\Test.txt";
+            var mockFileSystem = new MockFileSystem();
+            var mockInputFile = new MockFileData("");
+
+            mockFileSystem.AddFile(mockFileName, mockInputFile);
+
+            DateTime nowStamp = DateTime.Now;
+
+            // Instantiate test subject with mock file system
+            MasterLogWriter mlw = new MasterLogWriter(mockFileSystem);
+
+            // The action being tested
+            mlw.masterLogLocation = mockFileName;
+            mlw.WriteEntry("This is some free text");
+
+            // Testing results
+            MockFileData mockOutputFile = mockFileSystem.GetFile(mockFileName);
+            string[] outputLines = mockOutputFile.TextContents.SplitLines();
+            Console.WriteLine("Number of lines in mock file: {0}", outputLines.Length);
+            Assert.IsTrue(outputLines.Length == 1);
+            Console.WriteLine(outputLines[0]);
+            Assert.AreEqual(outputLines[0], "This is some free text");
+        }
+
+        [TestMethod]
+        public void MasterLogWriter_WriteFreeTextLogTest()
+        {
+            // Prepare mock file system for test
+            string mockFileName = @"C:\temp\in.txt";
+            var mockFileSystem = new MockFileSystem();
+
+            var mockInputFile = new MockFileData("line1\nline2\nline3\n");
+
+            mockFileSystem.AddFile(mockFileName, mockInputFile);
+
+            DateTime nowStamp = DateTime.Now;
+
+            // Instantiate test subject with mock file system
+            MasterLogWriter mlw = new MasterLogWriter(mockFileSystem);
+
+            // The action being tested
+            mlw.masterLogLocation = mockFileName;
+            mlw.WriteEntry("This is some free text");
+
+            // Testing results
+            MockFileData mockOutputFile = mockFileSystem.GetFile(mockFileName);
+            string[] outputLines = mockOutputFile.TextContents.SplitLines();
+            Console.WriteLine("Number of lines in mock file: {0}", outputLines.Length);
+            Assert.AreEqual(outputLines[0], "line1");
+            Assert.AreEqual(outputLines[1], "line2");
+            Assert.AreEqual(outputLines[2], "line3");
+            Assert.IsTrue(outputLines.Length == 4);
+            Assert.AreEqual(outputLines[3], "This is some free text");
         }
     }
 }
