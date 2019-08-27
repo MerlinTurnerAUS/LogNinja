@@ -22,4 +22,10 @@
     <timeStampTag>timestamp</timeStampTag>
     <pollingInterval>5000</pollingInterval>
   </logSource>
+  <logSource>
+    <type>csv</type>
+    <location>C:\Temp\csv\payments.csv</location>
+    <formatString>{0:yyyy-MM-dd HH:mm:ss.fff}, C:\Temp\csv\payments.csv, {6}, Item no:{1} Description:{2} Cost: {3} Paid: {4} Due Date: {5} Notes: {7}</formatString>
+    <ignoreTitleRow>yes</ignoreTitleRow>
+  </logSource>
 </sources>

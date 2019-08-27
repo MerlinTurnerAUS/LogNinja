@@ -13,9 +13,9 @@ using System.Xml.Linq;
 
 namespace LogSpawner
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -58,6 +58,13 @@ namespace LogSpawner
                                                 new XElement("timestamp", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"))));
             document.Save(xmlFile);
 
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            StreamWriter sw = new StreamWriter(@"C:\Temp\csv\payments.csv", true);
+            sw.WriteLine("{0},{1},{2},{3},{4},{5},{6}", txtCSVItem.Text,txtCSVDesc.Text,txtCSVCost.Text,txtCSVPaid.Text,txtCSVDue.Text,txtCSVResult.Text,txtCSVNotes.Text);
+            sw.Close();
         }
     }
 }

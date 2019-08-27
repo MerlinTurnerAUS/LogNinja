@@ -1,6 +1,6 @@
 ﻿namespace LogSpawner
 {
-    partial class Form1
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -49,9 +49,26 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtCSVNotes = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtCSVResult = new System.Windows.Forms.TextBox();
+            this.txtCSVDue = new System.Windows.Forms.TextBox();
+            this.txtCSVPaid = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtCSVCost = new System.Windows.Forms.TextBox();
+            this.txtCSVDesc = new System.Windows.Forms.TextBox();
+            this.txtCSVItem = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -267,15 +284,174 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Name:";
             // 
-            // Form1
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.txtCSVNotes);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.txtCSVResult);
+            this.groupBox4.Controls.Add(this.txtCSVDue);
+            this.groupBox4.Controls.Add(this.txtCSVPaid);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.txtCSVCost);
+            this.groupBox4.Controls.Add(this.txtCSVDesc);
+            this.groupBox4.Controls.Add(this.txtCSVItem);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Location = new System.Drawing.Point(19, 453);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(758, 267);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "CSV";
+            // 
+            // txtCSVNotes
+            // 
+            this.txtCSVNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCSVNotes.Location = new System.Drawing.Point(70, 180);
+            this.txtCSVNotes.Name = "txtCSVNotes";
+            this.txtCSVNotes.Size = new System.Drawing.Size(665, 20);
+            this.txtCSVNotes.TabIndex = 14;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(4, 180);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(38, 13);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "Notes:";
+            // 
+            // txtCSVResult
+            // 
+            this.txtCSVResult.Location = new System.Drawing.Point(70, 154);
+            this.txtCSVResult.Name = "txtCSVResult";
+            this.txtCSVResult.Size = new System.Drawing.Size(197, 20);
+            this.txtCSVResult.TabIndex = 12;
+            // 
+            // txtCSVDue
+            // 
+            this.txtCSVDue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCSVDue.Location = new System.Drawing.Point(70, 126);
+            this.txtCSVDue.Name = "txtCSVDue";
+            this.txtCSVDue.Size = new System.Drawing.Size(665, 20);
+            this.txtCSVDue.TabIndex = 11;
+            // 
+            // txtCSVPaid
+            // 
+            this.txtCSVPaid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCSVPaid.Location = new System.Drawing.Point(70, 100);
+            this.txtCSVPaid.Name = "txtCSVPaid";
+            this.txtCSVPaid.Size = new System.Drawing.Size(665, 20);
+            this.txtCSVPaid.TabIndex = 10;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(4, 154);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(40, 13);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Result:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(4, 126);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(56, 13);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Due Date:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(4, 100);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(31, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Paid:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(7, 238);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Write to CSV";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // txtCSVCost
+            // 
+            this.txtCSVCost.Location = new System.Drawing.Point(70, 74);
+            this.txtCSVCost.Name = "txtCSVCost";
+            this.txtCSVCost.Size = new System.Drawing.Size(197, 20);
+            this.txtCSVCost.TabIndex = 5;
+            // 
+            // txtCSVDesc
+            // 
+            this.txtCSVDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCSVDesc.Location = new System.Drawing.Point(70, 46);
+            this.txtCSVDesc.Name = "txtCSVDesc";
+            this.txtCSVDesc.Size = new System.Drawing.Size(665, 20);
+            this.txtCSVDesc.TabIndex = 4;
+            // 
+            // txtCSVItem
+            // 
+            this.txtCSVItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCSVItem.Location = new System.Drawing.Point(70, 20);
+            this.txtCSVItem.Name = "txtCSVItem";
+            this.txtCSVItem.Size = new System.Drawing.Size(665, 20);
+            this.txtCSVItem.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(4, 74);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(31, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Cost:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(4, 46);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(63, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Description:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(4, 20);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Item no:";
+            // 
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 531);
+            this.ClientSize = new System.Drawing.Size(800, 746);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "frmMain";
             this.Text = "Log Spawner";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -283,6 +459,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -310,6 +488,22 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox txtCSVNotes;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtCSVResult;
+        private System.Windows.Forms.TextBox txtCSVDue;
+        private System.Windows.Forms.TextBox txtCSVPaid;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtCSVCost;
+        private System.Windows.Forms.TextBox txtCSVDesc;
+        private System.Windows.Forms.TextBox txtCSVItem;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
 
