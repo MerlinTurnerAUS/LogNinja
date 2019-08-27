@@ -59,7 +59,7 @@ namespace MasterLoggerMonitor
                         break;
                     case "csv":
                         Console.WriteLine("Setting up csv file logger");
-                        TextFileHandler textHandler = new TextFileHandler(masterLogger,
+                        CSVFileHandler textHandler = new CSVFileHandler(masterLogger,
                                                                     logSource.Element("location").Value,
                                                                     logSource.Element("formatString").Value,
                                                                     logSource.Element("ignoreTitleRow").Value);

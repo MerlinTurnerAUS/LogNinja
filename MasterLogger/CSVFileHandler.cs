@@ -8,14 +8,14 @@ using System.IO;
 
 namespace MasterLoggerMonitor
 {
-    class TextFileHandler
+    public class CSVFileHandler
     {
         private MasterLogWriter mlw;
         private string location;
         private string formatString;
         private bool ignoreFirstLine=false;
 
-        public TextFileHandler(MasterLogWriter masterLogWrtr, string fileLocation, string formatStr, string ignoreTitleRow)
+        public CSVFileHandler(MasterLogWriter masterLogWrtr, string fileLocation, string formatStr, string ignoreTitleRow)
         {
             mlw = masterLogWrtr;
             location = fileLocation;
