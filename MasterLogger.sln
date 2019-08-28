@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogSpawner", "LogSpawner\Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitorTests", "MonitorTests\MonitorTests.csproj", "{59571F8A-2EBA-4563-8647-802C6F828C79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viewer", "WebSnoopy\Viewer.csproj", "{8EBCE648-3194-493A-8A8F-6D2AD7E05D1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{59571F8A-2EBA-4563-8647-802C6F828C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59571F8A-2EBA-4563-8647-802C6F828C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59571F8A-2EBA-4563-8647-802C6F828C79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EBCE648-3194-493A-8A8F-6D2AD7E05D1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EBCE648-3194-493A-8A8F-6D2AD7E05D1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EBCE648-3194-493A-8A8F-6D2AD7E05D1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EBCE648-3194-493A-8A8F-6D2AD7E05D1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -35,7 +35,7 @@ namespace MasterLoggerMonitor
                 {
                     case "txt":
                         Console.WriteLine("Setting up Text Log file");
-                        LogFileHandler lfh = new LogFileHandler(masterLogger, logSource.Element("location").Value, logSource.Element("format").Value, MasterLogLocation);
+                        LogFileHandler lfh = new LogFileHandler(masterLogger, logSource.Element("location").Value, logSource.Element("format").Value);
                         break;
                     case "dbTable":
                         Console.WriteLine("Setting up db Table logger");

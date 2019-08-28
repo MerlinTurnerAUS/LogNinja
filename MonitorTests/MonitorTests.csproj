@@ -60,6 +60,7 @@
     <Compile Include="MasterLogWriterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DBHandlerTests.cs" />
+    <Compile Include="LogFileHandlerTests.cs" />
     <Compile Include="XMLHandlerTests.cs" />
   </ItemGroup>
   <ItemGroup>

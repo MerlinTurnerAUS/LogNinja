@@ -9,14 +9,14 @@ using System.Threading;
 
 namespace MasterLoggerMonitor
 {
-    class LogFileHandler
+    public class LogFileHandler
     {
         public string location { get; set; }
         public string[] format { get; set; }
         private MasterLogWriter masterLogger;
 
         
-        public LogFileHandler(MasterLogWriter mlw, string fileLocation, string fileFormat, string masterLogFile)
+        public LogFileHandler(MasterLogWriter mlw, string fileLocation, string fileFormat)
         {
             location = fileLocation;
             format = fileFormat.Split(',');

@@ -1,0 +1,45 @@
+﻿<div class="jumbotron">
+    <h1>Snoops.NET</h1>
+    <p class="lead">All Execution Service machines - running and stopped.</p>
+    <table style="border-collapse: separate; border-spacing: 10px;">
+        <tr>
+            <td>
+                <input type="button" value="Refresh List" id="click-me" class="btn btn-danger" />
+            </td>
+            <td style="text-align:right">Machine count:</td>
+            <td id="machineTotal" style="text-align:left"></td>
+            <td style="text-align:right">Prod:</td>
+            <td id="prodTotal" style="text-align:left"></td>
+            <td style="text-align:right">Test:</td>
+            <td id="testTotal" style="text-align:left"></td>
+            <td style="text-align:right">Dev:</td>
+            <td id="devTotal" style="text-align:left"></td>
+        </tr>
+    </table>
+    <div id="welcome-messages"></div>
+</div>
+
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.4.0.min.js"></script>
+    <script src="~/signalr/js"></script>
+    <script src="~/Scripts/SignalR.js"></script>
+
+}
+
+<div class="row">
+
+    <table class='table' id="ESMachines">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">PC Name</th>
+                <th onclick="sortTable(1)">Execution process name</th>
+                <th onclick="sortTable(2)">Pointing to:</th>
+                <th onclick="sortTable(3)">Connection string</th>
+                <th onclick="sortTable(4)">Location</th>
+                <th onclick="sortTable(5)">Status</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
