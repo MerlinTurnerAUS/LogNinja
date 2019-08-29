@@ -10,8 +10,8 @@
     <type>dbTable</type>
     <connStr>server=localhost\SQLExpress;database=Portal;integrated security=true</connStr>
     <query>SELECT * FROM Documents WHERE DateModified > @DateModified ORDER BY DateModified</query>
-    <IDField>DocumentID</IDField>
-    <mapping time="DateModified" output="'{1}' last changed by user '{8}'" error="Error"></mapping>
+    <formatString>{7:yyyy-MM-dd HH:mm:ss.fff}, DB:Portal, {4}, '{1}' last changed by user '{8}'"></formatString>
+    <timeStamp>DateModified</timeStamp>
     <pollingInterval>5000</pollingInterval>
   </logSource>
   <logSource>

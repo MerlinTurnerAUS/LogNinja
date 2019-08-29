@@ -5,16 +5,11 @@
         .done(function () {
             $.connection.hub.logging = false;
             $.connection.hub.log("Connection established");
-            snoopHub.server.sigTest("SignalR connection established! Building list...");
             populateList();
         })
         .fail(function () {
             writeToPage("Error connecting to SignalR");
         });
-
-    snoopHub.client.announce = function (message) {
-        writeToPage(message);
-    };
 
     snoopHub.client.addLogEntry = function (logEntry) {
 
@@ -30,11 +25,6 @@
     };
 
 
-    var writeToPage = function (message) {
-        $("#welcome-messages").empty();
-        $("#welcome-messages").append(message + "<br />");
-    };
-
     $("#click-me").on("click", function () {
         populateList();
     });
@@ -42,6 +32,5 @@
     var populateList = function () {
         $('#ESMachines tbody').empty();
         snoopHub.server.getESMachineDetails();
-        snoopHub.server.sigTest("");
     };
 })();

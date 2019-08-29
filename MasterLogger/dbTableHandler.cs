@@ -18,14 +18,13 @@ namespace MasterLoggerMonitor
         public DateTime lastTimeProcessed { get; set; }
         private MasterLogWriter masterLogger;
 
-        public dbTableHandler(MasterLogWriter mlw, string connectionString, string query,string time, string outString, string errColumn, string pollTime)
+        public dbTableHandler(MasterLogWriter mlw, string connectionString, string query,string formatString,string timeStampColumn, string pollTime)
         {
             masterLogger = mlw;
             connStr = connectionString;
             selectQuery = query;
-            timeColumn = time;
-            outputString = outString;
-            errorColumn = errColumn;
+            timeColumn = timeStampColumn;
+            outputString = formatString;
             lastTimeProcessed = DateTime.MinValue;
 
             // Get all rows currently in table
@@ -44,8 +43,6 @@ namespace MasterLoggerMonitor
             {
                 string timeString;
                 DateTime dtLastModified;
-                string Output;
-                string ErrString = "";
                 string[] arguments = new string[dt.Columns.Count];
 
                 dtLastModified = Convert.ToDateTime(row[timeColumn]);
@@ -54,18 +51,7 @@ namespace MasterLoggerMonitor
                 for (int iCol = 0; iCol < dt.Columns.Count; iCol++)
                     arguments[iCol] = row[iCol].ToString();
 
-                if (row[errorColumn].ToString() == "")
-                {
-                    ErrString = "INFO";
-                    Output = string.Format(outputString, arguments);
-                }
-                else
-                {
-                    ErrString = "ERROR";
-                    Output = string.Format("{0} in {1}", row[errorColumn], outputString);
-                    Output = string.Format(Output, arguments);
-                }
-                masterLogger.WriteEntry(timeString, connStr, ErrString, Output);
+                masterLogger.WriteEntry(string.Format(outputString, arguments));
 
                 // Get last Date Modified
                 lastTimeProcessed = dtLastModified;

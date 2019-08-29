@@ -43,9 +43,8 @@ namespace MasterLoggerMonitor
                         dbTableHandler dbTH = new dbTableHandler(masterLogger,
                                                                     logSource.Element("connStr").Value,
                                                                     logSource.Element("query").Value,
-                                                                    logSource.Element("mapping").Attribute("time").Value,
-                                                                    logSource.Element("mapping").Attribute("output").Value,
-                                                                    logSource.Element("mapping").Attribute("error").Value,
+                                                                    logSource.Element("formatString").Value,
+                                                                    logSource.Element("timeStamp").Value,
                                                                     logSource.Element("pollingInterval").Value);
                         break;
                     case "xml":
