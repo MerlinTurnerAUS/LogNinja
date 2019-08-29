@@ -66,5 +66,36 @@ namespace LogSpawner
             sw.WriteLine("{0},{1},{2},{3},{4},{5},{6}", txtCSVItem.Text,txtCSVDesc.Text,txtCSVCost.Text,txtCSVPaid.Text,txtCSVDue.Text,txtCSVResult.Text,txtCSVNotes.Text);
             sw.Close();
         }
+
+        private void BtnReset_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Delete master log
+                File.Delete(@"C:\Temp\MasterLog\MasterLog.log");
+
+                //Replace log file with saved initial state
+                File.Delete(@"C:\Temp\logs\app.log");
+                File.Copy(@"C:\Temp\logs\app - Copy.log", @"C:\Temp\logs\app.log");
+
+                //Replace xml file with saved initial state
+                File.Delete(@"C:\Temp\xml\log.xml");
+                File.Copy(@"C:\Temp\xml\log - Copy.xml", @"C:\Temp\xml\log.xml");
+
+                //Replace csv file with saved initial state
+                File.Delete(@"C:\Temp\csv\payments.csv");
+                File.Copy(@"C:\Temp\csv\payments - Copy.csv", @"C:\Temp\csv\payments.csv");
+
+                //clear new data records
+                SqlConnection conn = new SqlConnection(@"server=localhost\SQLExpress;database=Portal;integrated security=true");
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("DELETE Documents WHERE DocumentID > 4", conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

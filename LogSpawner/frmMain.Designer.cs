@@ -65,6 +65,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -79,7 +80,7 @@
             this.groupBox1.Controls.Add(this.txtLogText);
             this.groupBox1.Controls.Add(this.chkLogError);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
+            this.groupBox1.Location = new System.Drawing.Point(13, 47);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(764, 99);
             this.groupBox1.TabIndex = 0;
@@ -135,7 +136,7 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(19, 119);
+            this.groupBox2.Location = new System.Drawing.Point(19, 153);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(758, 147);
             this.groupBox2.TabIndex = 1;
@@ -215,7 +216,7 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Location = new System.Drawing.Point(19, 284);
+            this.groupBox3.Location = new System.Drawing.Point(19, 318);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(758, 147);
             this.groupBox3.TabIndex = 7;
@@ -303,7 +304,7 @@
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Location = new System.Drawing.Point(19, 453);
+            this.groupBox4.Location = new System.Drawing.Point(19, 487);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(758, 267);
             this.groupBox4.TabIndex = 8;
@@ -442,11 +443,22 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Item no:";
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(13, 12);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(764, 23);
+            this.btnReset.TabIndex = 16;
+            this.btnReset.Text = "Reset to initial conditions";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.BtnReset_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 746);
+            this.ClientSize = new System.Drawing.Size(800, 784);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -504,6 +516,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 

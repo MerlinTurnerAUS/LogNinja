@@ -18,10 +18,15 @@
 
     snoopHub.client.addLogEntry = function (logEntry) {
 
-        var rowHTML = "<tr><td>";
+        var rowHTML;
+
+        if(logEntry.isError)
+            rowHTML = "<tr  style='background-color: coral'><td>";
+        else
+            rowHTML = "<tr><td>";
 
         rowHTML = rowHTML + logEntry.timeStamp + "</td><td>" + logEntry.source + "</td><td>" + logEntry.status + "</td><td>" + logEntry.entryText + "</td><td>"; 
-        $('#logEntries tbody').append(rowHTML);
+        $('#logEntries tbody').prepend(rowHTML);
     };
 
 
