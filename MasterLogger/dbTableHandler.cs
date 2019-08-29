@@ -49,7 +49,7 @@ namespace MasterLoggerMonitor
                 string[] arguments = new string[dt.Columns.Count];
 
                 dtLastModified = Convert.ToDateTime(row[timeColumn]);
-                timeString = dtLastModified.ToString("yyyy-MM-dd HH:mm:ss,fff");
+                timeString = dtLastModified.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
                 for (int iCol = 0; iCol < dt.Columns.Count; iCol++)
                     arguments[iCol] = row[iCol].ToString();

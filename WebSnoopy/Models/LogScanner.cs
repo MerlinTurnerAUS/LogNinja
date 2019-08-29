@@ -8,39 +8,30 @@ using System.Xml.Linq;
 using Microsoft.AspNet.SignalR.Hubs;
 using System.IO;
 using System.Threading;
+using System.Timers;
 
 namespace Models
 {
 
     public class LogScanner
     {
+        private IHubCallerConnectionContext<dynamic> CallerContext;
 
         public void SendToSignalRClient(IHubCallerConnectionContext<dynamic> Clients)
         {
+            CallerContext = Clients;
 
-            LogEntryData logEntry = new LogEntryData();
-            logEntry.PCName = "merl";
-            logEntry.ServiceName = "merl";
-            logEntry.Location = "merl";
-            logEntry.ConnStr = "merl";
-            logEntry.Location = "merl";
-            logEntry.Status = "Running";
-            Clients.Caller.addLogEntry(logEntry);
-            Clients.Caller.addLogEntry(logEntry);
-            Clients.Caller.addLogEntry(logEntry);
-            Clients.Caller.addLogEntry(logEntry);
-
-            spawnWatcher(Clients);
+            spawnWatcher();
         }
 
 
-        private async Task spawnWatcher(IHubCallerConnectionContext<dynamic> Clients)
+        private async Task spawnWatcher()
         {
-            await Task.Run(() => SetUpWatcher(Clients));
+            await Task.Run(() => SetUpWatcher());
 
         }
 
-        private async Task SetUpWatcher(IHubCallerConnectionContext<dynamic> Clients)
+        private async Task SetUpWatcher()
         {
             FileInfo fi = new FileInfo(@"C:\Temp\MasterLog\MasterLog.log");
 
@@ -70,13 +61,11 @@ namespace Models
                                 string[] cols = line.Split(',');
 
                                 LogEntryData logEntry = new LogEntryData();
-                                logEntry.PCName = cols[0];
-                                logEntry.ServiceName = cols[1];
-                                logEntry.Location = cols[2];
-                                logEntry.ConnStr = cols[3];
-                                logEntry.Location = cols[4];
-                                logEntry.Status = "Running";
-                                Clients.Caller.addLogEntry(logEntry); 
+                                logEntry.timeStamp = cols[0];
+                                logEntry.source = cols[1];
+                                logEntry.status = cols[2];
+                                logEntry.entryText = cols[3];
+                                CallerContext.Caller.addLogEntry(logEntry); 
                             }
                             latch.Set();
                         }

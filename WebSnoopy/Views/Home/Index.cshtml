@@ -6,14 +6,6 @@
             <td>
                 <input type="button" value="Refresh List" id="click-me" class="btn btn-danger" />
             </td>
-            <td style="text-align:right">Machine count:</td>
-            <td id="machineTotal" style="text-align:left"></td>
-            <td style="text-align:right">Prod:</td>
-            <td id="prodTotal" style="text-align:left"></td>
-            <td style="text-align:right">Test:</td>
-            <td id="testTotal" style="text-align:left"></td>
-            <td style="text-align:right">Dev:</td>
-            <td id="devTotal" style="text-align:left"></td>
         </tr>
     </table>
     <div id="welcome-messages"></div>
@@ -29,14 +21,13 @@
 
     <div class="row">
         
-        <table class='table' id="ESMachines">
+        <table class='table' id="logEntries">
             <thead>
                 <tr>
-                    <th onclick="sortTable(0)">PC Name</th>
-                    <th onclick="sortTable(1)">Execution process name</th>
-                    <th onclick="sortTable(2)">Pointing to:</th>
-                    <th onclick="sortTable(3)">Connection string</th>
-                    <th onclick="sortTable(4)">Location</th>
+                    <th onclick="sortTable(0)">Timestamp</th>
+                    <th onclick="sortTable(1)">Log entry source</th>
+                    <th onclick="sortTable(2)">Status</th>
+                    <th onclick="sortTable(3)">Log entry text</th>
                 </tr>
             </thead>
             <tbody></tbody>

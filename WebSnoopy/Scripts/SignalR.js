@@ -20,8 +20,8 @@
 
         var rowHTML = "<tr><td>";
 
-        rowHTML = rowHTML + logEntry.PCName + "</td><td>" + logEntry.ServiceName + "</td><td>" + logEntry.DB + "</td><td>" + logEntry.ConnStr + "</td><td>" + logEntry.Location + "</td></tr>"; // + "</td><td>" + logEntry.Status 
-        $('#ESMachines tbody').append(rowHTML);
+        rowHTML = rowHTML + logEntry.timeStamp + "</td><td>" + logEntry.source + "</td><td>" + logEntry.status + "</td><td>" + logEntry.entryText + "</td><td>"; 
+        $('#logEntries tbody').append(rowHTML);
     };
 
 
