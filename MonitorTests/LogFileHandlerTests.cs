@@ -22,7 +22,7 @@ namespace MonitorTests
             MasterLogWriter mlw = new MasterLogWriter(mockFileSystem);
             mlw.masterLogLocation = mockFileName;
 
-            LogFileHandler lfh = new LogFileHandler(mlw, @"C:\Temp\logs\app.log", "Time,Level,Output");
+            LogFileHandler lfh = new LogFileHandler(mlw, @"C:\Temp\logs\app.log", @"{0:yyyy-MM-dd HH:mm:ss.fff}, C:\Temp\xml\log.xml, {1}, {2}");
 
             MockFileData mockOutputFile = mockFileSystem.GetFile(mockFileName);
             string[] outputLines = mockOutputFile.TextContents.SplitLines();

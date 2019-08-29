@@ -11,15 +11,15 @@ namespace MasterLoggerMonitor
 {
     public class LogFileHandler
     {
-        public string location { get; set; }
-        public string[] format { get; set; }
+        private string location;
+        private string formatString;
         private MasterLogWriter masterLogger;
 
         
         public LogFileHandler(MasterLogWriter mlw, string fileLocation, string fileFormat)
         {
             location = fileLocation;
-            format = fileFormat.Split(',');
+            formatString = fileFormat;
             masterLogger = mlw;
 
             spawnWatcher();
@@ -59,30 +59,7 @@ namespace MasterLoggerMonitor
                                 // Process line in log file
                                 string[] cols = line.Split(',');
 
-                                string Timestamp="";
-                                string Level="";
-                                string Output="";
-
-                                // Loop through format array and find where the columns sit so we know what to map to what
-                                for(int i=0; i <= format.GetUpperBound(0); i++)
-                                {
-                                    if (format[i] == "Time")
-                                        Timestamp = cols[i];
-                                }
-
-                                for (int i = 0; i <= format.GetUpperBound(0); i++)
-                                {
-                                    if (format[i] == "Level")
-                                        Level = cols[i];
-                                }
-
-                                for (int i = 0; i <= format.GetUpperBound(0); i++)
-                                {
-                                    if (format[i] == "Output")
-                                        Output = cols[i];
-                                }
-
-                                masterLogger.WriteEntry(Timestamp, location, Level.Trim(), Output.Trim());
+                                masterLogger.WriteEntry(string.Format(formatString,cols));
                             }
                             latch.Set();
                         }

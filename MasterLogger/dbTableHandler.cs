@@ -10,20 +10,21 @@ namespace MasterLoggerMonitor
 {
     public class dbTableHandler
     {
-        public string connStr { get; set; }
-        public string selectQuery { get; set; }
-        public string timeColumn { get; set; }
-        public string outputString { get; set; }
-        public string errorColumn { get; set; }
-        public DateTime lastTimeProcessed { get; set; }
+        private string connStr;
+        private string selectQuery;
+        private string timeColumn;
+        private string errColumn;
+        private string outputString;
+        private DateTime lastTimeProcessed;
         private MasterLogWriter masterLogger;
 
-        public dbTableHandler(MasterLogWriter mlw, string connectionString, string query,string formatString,string timeStampColumn, string pollTime)
+        public dbTableHandler(MasterLogWriter mlw, string connectionString, string query, string formatString, string timeStampColumn,string errorColumn, string pollTime)
         {
             masterLogger = mlw;
             connStr = connectionString;
             selectQuery = query;
             timeColumn = timeStampColumn;
+            errColumn = errorColumn;
             outputString = formatString;
             lastTimeProcessed = DateTime.MinValue;
 
@@ -41,15 +42,18 @@ namespace MasterLoggerMonitor
             DataTable dt = DataGateway.GetRecordsSinceLastPoll(connStr, selectQuery, timeColumn, lastTimeProcessed);
             foreach (DataRow row in dt.Rows)
             {
-                string timeString;
                 DateTime dtLastModified;
-                string[] arguments = new string[dt.Columns.Count];
+                object[] arguments = new object[dt.Columns.Count];
 
                 dtLastModified = Convert.ToDateTime(row[timeColumn]);
-                timeString = dtLastModified.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+                if (row[errColumn].ToString() == "")
+                    row[errColumn] = "INFO";
+                else
+                    row[errColumn] = "ERROR";
 
                 for (int iCol = 0; iCol < dt.Columns.Count; iCol++)
-                    arguments[iCol] = row[iCol].ToString();
+                    arguments[iCol] = row[iCol];
 
                 masterLogger.WriteEntry(string.Format(outputString, arguments));
 
