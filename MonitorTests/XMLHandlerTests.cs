@@ -47,22 +47,28 @@ namespace MonitorTests
             mlw.masterLogLocation = mockFileName;
 
             XMLHandler xmlH = new XMLHandler(mlw, @"C:\Temp\xml\log.xml", @"{4:yyyy-MM-dd HH:mm:ss.fff}, C:\Temp\xml\log.xml, {3}, {1} | {2}", "action", "timestamp", "5000");
+
+            string xmlFile = @"C:\Temp\xml\log.xml";
+
+            string timeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+            XDocument document = XDocument.Load(xmlFile);
+            document.Element("actions").Add(new XElement("action",
+                                                new XElement("ID", 10),
+                                                new XElement("name", "TestName"),
+                                                new XElement("description", "TestDescription"),
+                                                new XElement("level", "INFO"),
+                                                new XElement("timestamp", timeStamp)));
+            document.Save(xmlFile);
+
+            System.Threading.Thread.Sleep(5000);
+
             MockFileData mockOutputFile = mockFileSystem.GetFile(mockFileName);
             string[] outputLines = mockOutputFile.TextContents.SplitLines();
             Console.WriteLine("Number of lines in mock file: {0}", outputLines.Length);
-
             Assert.IsTrue(outputLines.Length > 0);
-            //string xmlFile = @"C:\Temp\xml\log.xml";
-
-            //XDocument document = XDocument.Load(xmlFile);
-            //document.Element("actions").Add(new XElement("action",
-            //                                    new XElement("ID", 10),
-            //                                    new XElement("name", txtName.Text),
-            //                                    new XElement("description", txtXMLDesk.Text),
-            //                                    new XElement("level", txtErrorLevelXML.Text),
-            //                                    new XElement("timestamp", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"))));
-            //document.Save(xmlFile);
-
+            string lastLine = outputLines[outputLines.Length-1];
+            Assert.AreEqual(string.Format(@"{0:yyyy-MM-dd HH:mm:ss.fff}, C:\Temp\xml\log.xml, INFO, TestName | TestDescription", timeStamp),lastLine);
         }
     }
 }
