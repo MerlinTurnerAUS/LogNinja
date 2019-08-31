@@ -63,6 +63,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="configureLogs%28commented example%29.xml" />
     <Content Include="configureLogs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
