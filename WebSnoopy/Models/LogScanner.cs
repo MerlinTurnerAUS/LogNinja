@@ -9,6 +9,7 @@ using Microsoft.AspNet.SignalR.Hubs;
 using System.IO;
 using System.Threading;
 using System.Timers;
+using System.Configuration;
 
 namespace Models
 {
@@ -33,7 +34,7 @@ namespace Models
 
         private async Task SetUpWatcher()
         {
-            FileInfo fi = new FileInfo(@"C:\Temp\MasterLog\MasterLog.log");
+            FileInfo fi = new FileInfo(ConfigurationManager.AppSettings["MasterLogFile"]);
 
             var lockMe = new object();
             using (var latch = new ManualResetEvent(true))
